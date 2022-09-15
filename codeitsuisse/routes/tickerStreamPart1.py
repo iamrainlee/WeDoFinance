@@ -8,7 +8,7 @@ from codeitsuisse import app
 logger = logging.getLogger(__name__)
 
 @app.route('/tickerStreamPart1', methods=['POST'])
-def evaluate():
+def tickerStreamPart1():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
     inputValue = data.get("stream")
