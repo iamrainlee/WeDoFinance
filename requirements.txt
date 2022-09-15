@@ -23,6 +23,6 @@ shutilwhich==1.1.0
 urllib3==1.22
 virtualenv==15.1.0
 virtualenv-clone==0.2.6
-Werkzeug==0.14.1
+Werkzeug==2.2.2
 sseclient==0.0.27
 networkx
