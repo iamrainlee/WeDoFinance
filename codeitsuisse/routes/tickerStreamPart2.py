@@ -7,6 +7,14 @@ from codeitsuisse import app
 
 logger = logging.getLogger(__name__)
 
+@app.route('/tickerStreamPart2', methods=['POST'])
+def evaluate():
+    data = request.get_json()
+    logging.info("data sent for evaluation {}".format(data))
+    inputList = data.get("stream")
+    inputQuantity = data.get("quantityBlock")
+    return json.dumps(to_cumulative_delayed(inputList))
+
 def to_cumulative_delayed(stream: list, quantity_block: int):
     result = {}
     for i in range(len(stream)):
@@ -49,11 +57,3 @@ def oneDpToInt(num: str):
 
 def intToOneDp(num: int):
     return f"{num//10}.{num%10}"
-
-@app.route('/tickerStreamPart2', methods=['POST'])
-def evaluate():
-    data = request.get_json()
-    logging.info("data sent for evaluation {}".format(data))
-    inputList = data.get("stream")
-    inputQuantity = data.get("quantityBlock")
-    return json.dumps(to_cumulative_delayed(inputList))
