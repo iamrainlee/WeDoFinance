@@ -15,7 +15,7 @@ def tickerStreamPart2():
     inputQuantity = data.get("quantityBlock")
     result = to_cumulative_delayed(inputList,inputQuantity)
     logging.info("result: {}".format(result))
-    return json.dumps(result)
+    return json.dumps({'output':result})
 
 def to_cumulative_delayed(stream: list, quantity_block: int):
     result = {}

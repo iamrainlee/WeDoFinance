@@ -14,7 +14,7 @@ def tickerStreamPart1():
     inputValue = data.get("stream")
     result = to_cumulative(inputValue)
     logging.info("result: {}".format(result))
-    return json.dumps(result)
+    return json.dumps({'output':result})
 
 def to_cumulative(stream: list):
     result = {}
