@@ -42,10 +42,10 @@ def reversle():
                     if resultHistory[i][j] == "2":
                         poss[j] = equationHistory[i][j]
                     if resultHistory[i][j] == "0":
-                        if equationHistory[i] in d: d.remove(equationHistory[i][j])
-                        if equationHistory[i] in s: s.remove(equationHistory[i][j])
+                        if equationHistory[i][j] in d: d.remove(equationHistory[i][j])
+                        if equationHistory[i][j] in s: s.remove(equationHistory[i][j])
         logging.info("poss: {}, {}".format(poss.count(""),(equationLength / 2 + 1)))
-        if poss.count("") > equationLength // 2 :
+        if poss.count("") >= equationLength // 2 :
             if ans_length == -1:
                 logging.info("equals not found, d: {},s: {}".format(d,s))
                 poss_ans_length = []
@@ -66,6 +66,7 @@ def reversle():
                 result = random.choice(possibles)
             else:
                 logging.info("equals found, ans_length:{}, d: {},s: {}".format(ans_length,d,s))
+                possibles = generate_possibles_fixed_length(equationLength,ans_length,d,s)
                 while len(possibles) == 0:
                     possibles = generate_possibles_fixed_length(equationLength,ans_length,d,s)
                 result = random.choice(possibles)
