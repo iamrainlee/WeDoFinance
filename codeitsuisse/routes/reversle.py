@@ -46,13 +46,13 @@ def reversle():
                             if int(equationHistory[i][j]) in d.keys():
                                 count = 0
                                 for j1 in range(len(equationHistory[i])):
-                                    if equationHistory[i][j1] == equationHistory[i][j] and resultHistory[i][j] in ["1","2"]:
+                                    if equationHistory[i][j1] == equationHistory[i][j] and resultHistory[i][j1] in ["1","2"]:
                                         count += 1
                                 d[int(equationHistory[i][j])] = count
                         if equationHistory[i][j] in s.keys():
                             count = 0
                             for j1 in range(len(equationHistory[i])):
-                                if equationHistory[i][j1] == equationHistory[i][j] and resultHistory[i][j] in ["1","2"]:
+                                if equationHistory[i][j1] == equationHistory[i][j] and resultHistory[i][j1] in ["1","2"]:
                                     count += 1
                             s[equationHistory[i][j]] = count
         for i in list(d.keys()):
