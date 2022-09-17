@@ -52,65 +52,58 @@ def turnrubiks(state,ops):
         state['b'][0] = state['r'][0]
         state['r'][0] = temp
         return state
-    if ops == "Ui":
-        temp = copy.deepcopy(state['f'][0])
-        state['f'][0] = state['l'][0]
-        state['r'][0] = state['f'][0]
-        state['b'][0] = state['r'][0]
-        state['r'][0] = temp
-        return state
     if ops == "L":
         temp = copy.deepcopy(state['u'][:,0])
-        state['u'][:,0] = state['b'][:,2]
+        state['u'][:,0] = state['b'][:,2][::-1]
         state['b'][:,2] = state['d'][:,0]
         state['d'][:,0] = state['f'][:,0]
-        state['f'][:,0] = temp
+        state['f'][:,0] = temp[::-1]
         return state
     if ops == "Li":
         temp = copy.deepcopy(state['u'][:,0])
         state['u'][:,0] = state['f'][:,0]
         state['f'][:,0] = state['d'][:,0]
-        state['d'][:,0] = state['b'][:,2]
-        state['b'][:,2] = temp
+        state['d'][:,0] = state['b'][:,2][::-1]
+        state['b'][:,2] = temp[::-1]
         return state
     if ops == "F":
         temp = copy.deepcopy(state['u'][2])
-        state['u'][2] = state['l'][:,2]
+        state['u'][2] = state['l'][:,2][::-1]
         state['l'][:,2] = state['d'][0]
-        state['d'][0] = state['r'][:,0]
+        state['d'][0] = state['r'][:,0][::-1]
         state['r'][:,0] = temp
         return state
     if ops == "Fi":
         temp = copy.deepcopy(state['u'][2])
         state['u'][2] = state['r'][:,0]
-        state['r'][:,0] = state['d'][0]
+        state['r'][:,0] = state['d'][0][::-1]
         state['d'][0] = state['l'][:,2]
-        state['l'][:,2] = temp
+        state['l'][:,2] = temp[::-1]
         return state
     if ops == "R":
         temp = copy.deepcopy(state['u'][:,2])
         state['u'][:,2] = state['f'][:,2]
         state['f'][:,2] = state['d'][:,2]
-        state['d'][:,2] = state['b'][:,0]
-        state['b'][:,0] = temp
+        state['d'][:,2] = state['b'][:,0][::-1]
+        state['b'][:,0] = temp[::-1]
         return state
     if ops == "Ri":
         temp = copy.deepcopy(state['u'][:,2])
-        state['u'][:,2] = state['b'][:,0]
-        state['b'][:,0] = state['d'][:,2]
+        state['u'][:,2] = state['b'][:,0][::-1]
+        state['b'][:,0] = state['d'][:,2][::-1]
         state['d'][:,2] = state['f'][:,2]
         state['f'][:,2] = temp
         return state
     if ops == "B":
         temp = copy.deepcopy(state['u'][0])
         state['u'][0] = state['r'][:,2]
-        state['r'][:,2] = state['d'][2]
+        state['r'][:,2] = state['d'][2][::-1]
         state['d'][2] = state['l'][:,0]
-        state['l'][:,0] = temp
+        state['l'][:,0] = temp[::-1]
         return state
     if ops == "Bi":
         temp = copy.deepcopy(state['u'][0])
-        state['u'][0] = state['l'][:,0]
+        state['u'][0] = state['l'][:,0][::-1]
         state['l'][:,0] = state['d'][2]
         state['d'][2] = state['r'][:,2]
         state['r'][:,2] = temp
