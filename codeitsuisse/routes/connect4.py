@@ -38,11 +38,11 @@ def connect4():
             try:
                 if( data['youAre'] != ""):
                     youAre = data['youAre']
-                    if(data['youAre'] == "🔴"):
+                    if(data['youAre'] == "\xF0\x9F\x94\xB4"):
                         logging.info("Prepare to make move")
             except:
                 try:
-                    if(data['player'] == "🔴"):
+                    if(data['player'] == "\xF0\x9F\x94\xB4"):
                         continue
                     else:
                         rdata = {}
