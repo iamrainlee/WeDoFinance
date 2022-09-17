@@ -32,7 +32,7 @@ def calculatestigfull(questions,maxRating,lucky):
     #     if (i['upper'] == 2 > max_l):
     #         l_accurate.append(1)
     #         count += 1
-    min_val = list(range(1,maxRating+1))
+    min_val = -1
     correct =  set()
     p = -1
     q = -1
@@ -49,7 +49,10 @@ def calculatestigfull(questions,maxRating,lucky):
             q = maxRating // gcd(2,maxRating)
             max_list.add(q['upper'])
             # min_list.add(q['from'])
-            min_val = [x for x in min_val if x < q["lower"] or x > q["upper"]]
+            if q["lower"] == 1:
+                min_val = q["upper"] + 1
+            else:
+                min_val = 1
             continue
         f = (q['lower'] + p*lucky -1)%(maxRating)+1
         t = (q['upper'] + p*lucky -1)%(maxRating)+1
@@ -61,7 +64,9 @@ def calculatestigfull(questions,maxRating,lucky):
         for i in list(max_list):
             if i >f and i<t:
                 correct.add(i+1)
-        min_val = [x for x in min_val if x < f or x > t]
+        if f == 1 or min_val != 1:
+            if min_val >= f:
+                min_val = t + 1
         correct.add(min_val)
         max_list.add(t)
         # min_list.add(f)
