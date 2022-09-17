@@ -19,6 +19,8 @@ def reversle():
             
     if "equationHistory" not in data:
         possibles = generate_possibles(equationLength)
+        while len(possibles) == 0:
+            possibles = generate_possibles(equationLength)
         result = random.choice(possibles)
     else:
         d = [0,1,2,3,4,5,6,7,8,9]
@@ -42,7 +44,7 @@ def reversle():
                     if resultHistory[i][j] == "0":
                         if equationHistory[i] in d: d.remove(equationHistory[i])
                         if equationHistory[i] in s: s.remove(equationHistory[i])
-        if poss.count("") > equationLength // 2:
+        if poss.count("") < equationLength // 2:
             if ans_length == -1:
                 poss_ans_length = []
                 if (min(ans_lens)-1>=1 and (equationLength - min(ans_lens) - 2)%2 == 1):
@@ -57,9 +59,12 @@ def reversle():
                         poss_ans_length.append(max(ans_lens)+2)
                     ans_length = random.choice(poss_ans_length)
                 possibles = generate_possibles_fixed_length(equationLength,ans_length,d,s)
+                while len(possibles) == 0:
+                    possibles = generate_possibles_fixed_length(equationLength,ans_length,d,s)
                 result = random.choice(possibles)
             else:
-                possibles = generate_possibles_fixed_length(equationLength,ans_length,d,s)
+                while len(possibles) == 0:
+                    possibles = generate_possibles_fixed_length(equationLength,ans_length,d,s)
                 result = random.choice(possibles)
         else:
             tries = []
