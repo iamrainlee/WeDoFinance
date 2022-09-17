@@ -71,15 +71,15 @@ def turnrubiks(state,ops):
         state['b'][:,2] = temp
         return state
     if ops == "F":
-        temp = copy.deepcopy(state['u'][3])
-        state['u'][3] = state['l'][:,2]
+        temp = copy.deepcopy(state['u'][2])
+        state['u'][2] = state['l'][:,2]
         state['l'][:,2] = state['d'][0]
         state['d'][0] = state['r'][:,0]
         state['r'][:,0] = temp
         return state
     if ops == "Fi":
-        temp = copy.deepcopy(state['u'][3])
-        state['u'][3] = state['r'][:,0]
+        temp = copy.deepcopy(state['u'][2])
+        state['u'][2] = state['r'][:,0]
         state['r'][:,0] = state['d'][0]
         state['d'][0] = state['l'][:,2]
         state['l'][:,2] = temp
