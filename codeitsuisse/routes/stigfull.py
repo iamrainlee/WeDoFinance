@@ -36,7 +36,7 @@ def calculatestigfull(questions,maxRating,lucky):
     correct =  dict.fromkeys(min_val, 0)
     p = -1
     q = -1
-    min_list = set()
+    # min_list = set()
     max_list = set()
     for q in questions:
         if p == -1:
@@ -48,7 +48,7 @@ def calculatestigfull(questions,maxRating,lucky):
             p = 2 // gcd(2,maxRating)
             q = maxRating // gcd(2,maxRating)
             max_list.add(q['to'])
-            min_list.add(q['from'])
+            # min_list.add(q['from'])
             min_val = [x for x in min_val if x < q["from"] or x > q["to"]]
             continue
         f = (q['from'] + p*lucky)%(maxRating-1)+1
@@ -64,7 +64,7 @@ def calculatestigfull(questions,maxRating,lucky):
         min_val = [x for x in min_val if x < f or x > t]
         correct[min_val] = 1
         max_list.add(t)
-        min_list.add(f)
+        # min_list.add(f)
         count = sum(value == 1 for value in correct.values())
         p = count // gcd(count,maxRating)
         q = maxRating // gcd(count,maxRating)
