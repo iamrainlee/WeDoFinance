@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 @app.route('/travelling-suisse-robot', methods=['POST'])
 def travellingsuisserobot():
-    data = request.data
+    data = request.get_data()
     logging.info("data sent for evaluation {}".format(data))
 
 
