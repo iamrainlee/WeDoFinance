@@ -33,18 +33,18 @@ def calculatestigfull(questions,maxRating,lucky):
     #         l_accurate.append(1)
     #         count += 1
     min_val = list(range(1,maxRating+1))
-    correct =  dict.fromkeys(min_val, 0)
+    correct =  set()
     p = -1
     q = -1
     # min_list = set()
     max_list = set()
     for q in questions:
         if p == -1:
-            correct[q['from']] = 1
+            correct.add(q['from'])
             if q['from'] != 1:
-                correct[1] = 1
+                correct.add(1)
             else:
-                correct[q['to']+1] = 1
+                correct.add(q['to']+1)
             p = 2 // gcd(2,maxRating)
             q = maxRating // gcd(2,maxRating)
             max_list.add(q['to'])
@@ -57,16 +57,15 @@ def calculatestigfull(questions,maxRating,lucky):
             temp = f
             f = t
             t = temp
-        correct[f] = 1
+        correct.add(f)
         for i in list(max_list):
             if i >f and i<t:
-                correct[i+1] = 1
+                correct.add(i+1)
         min_val = [x for x in min_val if x < f or x > t]
-        correct[min_val] = 1
+        correct.add(min_val)
         max_list.add(t)
         # min_list.add(f)
-        count = sum(value == 1 for value in correct.values())
-        p = count // gcd(count,maxRating)
+        p = len(correct) // gcd(count,maxRating)
         q = maxRating // gcd(count,maxRating)
     # for i in range(1,maxRating+1):
     #     possible_guesses = list(range(1,maxRating+1))
