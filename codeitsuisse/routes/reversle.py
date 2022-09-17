@@ -211,7 +211,7 @@ def generate_possibles_fixed_length(equationLength,ans_length,di,s):
         anses.append(a)
     for ans in anses:
         remaining = equationLength - len(str(ans)) - 1
-        for i in str(a):
+        for i in str(ans):
             di[int(i)] = di[int(i)] - 1
         for i in list(di.keys()):
             if di[i] == 0:
