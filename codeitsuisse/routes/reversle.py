@@ -203,12 +203,14 @@ def generate_possibles_fixed_length(equationLength,ans_length,di,s):
     anses = []
     while len(anses) < 1:
         a = random.randint(10**(ans_length-1),10**ans_length-1)
+        able = True
         for i in str(a):
             if int(i) not in di.keys():
-                continue
+                able = False
             if str(a).count(str(i)) > di[int(i)]:
-                continue
-        anses.append(a)
+                able = False
+        if able:
+            anses.append(a)
     for ans in anses:
         remaining = equationLength - len(str(ans)) - 1
         for i in str(ans):
