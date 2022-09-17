@@ -40,6 +40,9 @@ def connect4():
                     youAre = data['youAre']
                     if(data['youAre'] == "\xF0\x9F\x94\xB4"):
                         logging.info("Prepare to make move")
+                        rdata = {}
+                        rdata['action'] = '(╯°□°)╯︵ ┻━┻'
+                        requests.post("https://cis2022-arena.herokuapp.com/connect4/play/"+battleId, data = rdata)
             except:
                 try:
                     if(data['player'] == "\xF0\x9F\x94\xB4"):
