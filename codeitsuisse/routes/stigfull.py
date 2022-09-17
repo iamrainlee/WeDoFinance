@@ -13,12 +13,12 @@ logger = logging.getLogger(__name__)
 @app.route('/stig/full', methods=['POST'])
 def stigfull():
     data = request.get_json()
-    # logging.info("data sent for evaluation {}".format(data))
+    logging.info("data sent for evaluation {}".format(data))
     result = []
     for i in data:
         result.append(calculatestigfull(i['questions'],i['maxRating'],i['lucky']))
     
-    # logging.info("result: {}".format(result))
+    logging.info("result: {}".format(result))
     return json.dumps(result)
 
 def calculatestigfull(questions,maxRating,lucky):
