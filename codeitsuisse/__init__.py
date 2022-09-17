@@ -9,6 +9,7 @@ import codeitsuisse.routes.reversle
 import codeitsuisse.routes.stigwarmup
 import codeitsuisse.routes.connect4
 import codeitsuisse.routes.stigfull
+import codeitsuisse.routes.socialdistancing
 
 
 
