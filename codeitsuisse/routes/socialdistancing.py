@@ -60,7 +60,7 @@ def calsocialdistancing(s):
     n = int(d[2])-fixed
     if n > 1 and w*h <= (round(math.sqrt(n))+1)**2:
         return "No Solution"
-    if n>5:
+    if int(d[2])>4:
         return "No Solution"
     grid = []
     for i in range(h):
