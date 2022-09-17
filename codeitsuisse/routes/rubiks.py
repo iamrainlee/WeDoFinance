@@ -96,7 +96,7 @@ def turnrubiks(state,ops):
         return state
     if ops == "B":
         temp = copy.deepcopy(state['u'][0])
-        state['u'][0] = state['r'][:,2][::-1]
+        state['u'][0] = state['r'][:,2]
         state['r'][:,2] = state['d'][2][::-1]
         state['d'][2] = state['l'][:,0]
         state['l'][:,0] = temp[::-1]
@@ -123,7 +123,7 @@ def turnrubiks(state,ops):
         state['l'][2] = temp
         return state
 def rotate(s):
-    return np.array([[s[2][0],s[1][0],s[0][0]],[s[2][1],s[1][1],s[1][0]],[s[2][2],s[1][2],s[0][2]]])
+    return np.array([[s[2][0],s[1][0],s[0][0]],[s[2][1],s[1][1],s[0][1]],[s[2][2],s[1][2],s[0][2]]])
 
 def antirotate(s):
     return np.array([[s[0][2],s[1][2],s[2][2]],[s[0][1],s[1][1],s[2][1]],[s[0][0],s[1][0],s[2][0]]])
