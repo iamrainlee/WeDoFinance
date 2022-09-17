@@ -31,7 +31,7 @@ def rubiks():
     for i in state:
         state[i] = state[i].tolist()
     logging.info("result: {}".format(state))
-    return json.dumps({'output':state})
+    return json.dumps(state)
 
 def turnrubiks(state,ops):
     if len(ops) == 1:
