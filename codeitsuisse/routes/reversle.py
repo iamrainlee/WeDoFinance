@@ -55,10 +55,10 @@ def reversle():
                                 if equationHistory[i][j1] == equationHistory[i][j] and resultHistory[i][j] in ["1","2"]:
                                     count += 1
                             s[equationHistory[i][j]] = count
-        for i in d.keys():
+        for i in list(d.keys()):
             if d[i] == 0:
                 del d[i]
-        for i in s.keys():
+        for i in list(s.keys()):
             if s[i] == 0:
                 del s[i]
         if poss.count("") >= equationLength // 2 :
@@ -213,9 +213,9 @@ def generate_possibles_fixed_length(equationLength,ans_length,di,s):
         remaining = equationLength - len(str(ans)) - 1
         for i in str(a):
             di[int(i)] = di[int(i)] - 1
-        for i in di.keys():
-            if d[i] == 0:
-                del d[i]
+        for i in list(di.keys()):
+            if di[i] == 0:
+                del di[i]
         for j in range(1,remaining-1):
             if j != remaining - j - 1:
                 continue
