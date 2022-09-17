@@ -6,6 +6,7 @@ import codeitsuisse.routes.tickerStreamPart2
 import codeitsuisse.routes.rubiks
 import codeitsuisse.routes.travellingsuisserobot
 import codeitsuisse.routes.reversle
+import codeitsuisse.routes.stigwarmup
 
 
 
