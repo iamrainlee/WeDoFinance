@@ -32,8 +32,8 @@ def calculatestigfull(questions,maxRating,lucky):
     #     if (i['upper'] == 2 > max_l):
     #         l_accurate.append(1)
     #         count += 1
-    correct =  dict.fromkeys(questions, 0)
     min_val = list(range(1,maxRating+1))
+    correct =  dict.fromkeys(min_val, 0)
     p = -1
     q = -1
     min_list = set()
