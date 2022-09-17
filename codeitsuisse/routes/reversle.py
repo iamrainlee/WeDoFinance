@@ -44,8 +44,9 @@ def reversle():
                     if resultHistory[i][j] == "0":
                         if equationHistory[i] in d: d.remove(equationHistory[i])
                         if equationHistory[i] in s: s.remove(equationHistory[i])
-        if poss.count("") < equationLength // 2:
+        if poss.count("") < equationLength // 2 + 1:
             if ans_length == -1:
+                logging.info("equals not found, d: {},s: {}".format(d,s))
                 poss_ans_length = []
                 if (min(ans_lens)-1>=1 and (equationLength - min(ans_lens) - 2)%2 == 1):
                     poss_ans_length.append(min(ans_lens)-1)
@@ -63,10 +64,12 @@ def reversle():
                     possibles = generate_possibles_fixed_length(equationLength,ans_length,d,s)
                 result = random.choice(possibles)
             else:
+                logging.info("equals found, ans_length:{}, d: {},s: {}".format(ans_length,d,s))
                 while len(possibles) == 0:
                     possibles = generate_possibles_fixed_length(equationLength,ans_length,d,s)
                 result = random.choice(possibles)
         else:
+            logging.info("near to answer, ans_length:{}, d: {},s: {}".format(ans_length,d,s))
             tries = []
             for i in range(equal_sign):
                 if poss[i] == "":
@@ -113,10 +116,7 @@ def reversle():
                 if valid(d,ans):
                     temp = []
                     for a in d:
-                        if a == "\\":
-                            temp.append("\\\\")
-                        else:
-                            temp.append(str(a))
+                        temp.append(str(a))
                     temp.append("=")
                     temp.extend(list(str(ans)))      
                     pos_tries.append(temp)
@@ -174,10 +174,7 @@ def generate_possibles(equationLength):
                 if valid(d,ans):
                     temp = []
                     for a in d:
-                        if a == "\\":
-                            temp.append("\\\\")
-                        else:
-                            temp.append(str(a))
+                        temp.append(str(a))
                     temp.append("=")
                     temp.extend(list(str(ans)))      
                     possibilities.append(temp)
@@ -217,10 +214,7 @@ def generate_possibles_fixed_length(equationLength,ans_length,di,s):
                 if valid(d,ans):
                     temp = []
                     for a in d:
-                        if a == "\\":
-                            temp.append("\\\\")
-                        else:
-                            temp.append(str(a))
+                        temp.append(str(a))
                     temp.append("=")
                     temp.extend(list(str(ans)))      
                     possibilities.append(temp)
