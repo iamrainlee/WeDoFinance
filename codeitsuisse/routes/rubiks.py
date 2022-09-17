@@ -96,8 +96,8 @@ def turnrubiks(state,ops):
         temp = copy.deepcopy(state['u'][:,2])
         state['u'][:,2] = state['b'][:,0]
         state['b'][:,0] = state['d'][:,2]
-        state['d'][:,2] = state['f'][:,0]
-        state['f'][:,0] = temp
+        state['d'][:,2] = state['f'][:,2]
+        state['f'][:,2] = temp
         return state
     if ops == "B":
         temp = copy.deepcopy(state['u'][0])
