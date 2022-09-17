@@ -23,8 +23,8 @@ def reversle():
             possibles = generate_possibles(equationLength)
         result = random.choice(possibles)
     else:
-        d = [0,1,2,3,4,5,6,7,8,9]
-        s = ["+","-", "*", "/", "\\", "^" ]
+        d = {0:9,1:9,2:9,3:9,4:9,5:9,6:9,7:9,8:9,9:9}
+        s = {"+":9,"-":9, "*":9, "/":9, "\\":9, "^":9 }
         poss = [""] * equationLength
         equationHistory = data.get("equationHistory")
         resultHistory = data.get("resultHistory")
@@ -43,8 +43,24 @@ def reversle():
                         poss[j] = equationHistory[i][j]
                     if resultHistory[i][j] == "0":
                         if equationHistory[i][j].isnumeric(): 
-                            if int(equationHistory[i][j]) in d: d.remove(int(equationHistory[i][j]))
-                        if equationHistory[i][j] in s: s.remove(equationHistory[i][j])
+                            if int(equationHistory[i][j]) in d.keys():
+                                count = 0
+                                for j1 in range(len(equationHistory[i])):
+                                    if equationHistory[i][j1] == equationHistory[i][j] and resultHistory[i][j] in ["1","2"]:
+                                        count += 1
+                                d[int(equationHistory[i][j])] = count
+                        if equationHistory[i][j] in s.keys():
+                            count = 0
+                            for j1 in range(len(equationHistory[i])):
+                                if equationHistory[i][j1] == equationHistory[i][j] and resultHistory[i][j] in ["1","2"]:
+                                    count += 1
+                            s[equationHistory[i][j]] = count
+        for i in d.keys():
+            if d[i] == 0:
+                del d[i]
+        for i in s.keys():
+            if s[i] == 0:
+                del s[i]
         if poss.count("") >= equationLength // 2 :
             if ans_length == -1:
                 logging.info("equals not found, d: {},s: {}".format(d,s))
@@ -152,7 +168,7 @@ def valid(digits, ans):
 def generate_possibles(equationLength):
     possibilities = []
     
-    anses = [random.randint(1,10**(equationLength//3)-1),random.randint(1,10**(equationLength//3)-1)]
+    anses = [random.randint(1,10**(equationLength//3)-1)]
     for ans in anses:
         remaining = equationLength - len(str(ans)) - 1
 
@@ -185,20 +201,26 @@ def generate_possibles(equationLength):
 def generate_possibles_fixed_length(equationLength,ans_length,di,s):
     possibilities = []
     anses = []
-    while len(anses) < 2:
+    while len(anses) < 1:
         a = random.randint(10**(ans_length-1),10**ans_length-1)
         for i in str(a):
-            if int(i) not in di:
+            if int(i) not in di.keys():
+                continue
+            if str(a).count(str(i)) > di[int(i)]:
                 continue
         anses.append(a)
     for ans in anses:
         remaining = equationLength - len(str(ans)) - 1
-
+        for i in str(a):
+            di[int(i)] = di[int(i)] - 1
+        for i in di.keys():
+            if d[i] == 0:
+                del d[i]
         for j in range(1,remaining-1):
             if j != remaining - j - 1:
                 continue
             digits = []
-            for abc in di:
+            for abc in di.keys():
                 digits.append([abc])
             for z in range(j):
                 r = []
