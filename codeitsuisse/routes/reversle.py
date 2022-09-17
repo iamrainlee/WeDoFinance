@@ -42,8 +42,9 @@ def reversle():
                     if resultHistory[i][j] == "2":
                         poss[j] = equationHistory[i][j]
                     if resultHistory[i][j] == "0":
-                        if equationHistory[i] in d: d.remove(equationHistory[i])
-                        if equationHistory[i] in s: s.remove(equationHistory[i])
+                        if equationHistory[i] in d: d.remove(equationHistory[i][j])
+                        if equationHistory[i] in s: s.remove(equationHistory[i][j])
+        logging.info("poss: {}".format(poss))
         if poss.count("") < equationLength // 2 + 1:
             if ans_length == -1:
                 logging.info("equals not found, d: {},s: {}".format(d,s))
