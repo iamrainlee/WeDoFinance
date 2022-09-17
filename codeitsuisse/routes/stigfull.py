@@ -40,19 +40,19 @@ def calculatestigfull(questions,maxRating,lucky):
     max_list = set()
     for q in questions:
         if p == -1:
-            correct.add(q['from'])
-            if q['from'] != 1:
+            correct.add(q['lower'])
+            if q['lower'] != 1:
                 correct.add(1)
             else:
-                correct.add(q['to']+1)
+                correct.add(q['upper']+1)
             p = 2 // gcd(2,maxRating)
             q = maxRating // gcd(2,maxRating)
-            max_list.add(q['to'])
+            max_list.add(q['upper'])
             # min_list.add(q['from'])
-            min_val = [x for x in min_val if x < q["from"] or x > q["to"]]
+            min_val = [x for x in min_val if x < q["lower"] or x > q["upper"]]
             continue
-        f = (q['from'] + p*lucky)%(maxRating-1)+1
-        t = (q['to'] + p*lucky)%(maxRating-1)+1
+        f = (q['lower'] + p*lucky)%(maxRating-1)+1
+        t = (q['upper'] + p*lucky)%(maxRating-1)+1
         if f>t:
             temp = f
             f = t
@@ -65,8 +65,8 @@ def calculatestigfull(questions,maxRating,lucky):
         correct.add(min_val)
         max_list.add(t)
         # min_list.add(f)
-        p = len(correct) // gcd(count,maxRating)
-        q = maxRating // gcd(count,maxRating)
+        p = len(correct) // gcd(len(correct),maxRating)
+        q = maxRating // gcd(len(correct),maxRating)
     # for i in range(1,maxRating+1):
     #     possible_guesses = list(range(1,maxRating+1))
     #     for q in questions:
