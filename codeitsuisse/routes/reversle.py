@@ -25,7 +25,7 @@ def reversle():
     else:
         d = [0,1,2,3,4,5,6,7,8,9]
         s = ["+","-", "*", "/", "\\", "^" ]
-        poss = [""*equationLength]
+        poss = [""] * equationLength
         equationHistory = data.get("equationHistory")
         resultHistory = data.get("resultHistory")
         ans_length = -1
