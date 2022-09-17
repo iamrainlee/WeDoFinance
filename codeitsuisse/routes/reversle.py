@@ -44,7 +44,6 @@ def reversle():
                     if resultHistory[i][j] == "0":
                         if equationHistory[i][j] in d: d.remove(equationHistory[i][j])
                         if equationHistory[i][j] in s: s.remove(equationHistory[i][j])
-        logging.info("poss: {}, {}".format(poss.count(""),(equationLength / 2 + 1)))
         if poss.count("") >= equationLength // 2 :
             if ans_length == -1:
                 logging.info("equals not found, d: {},s: {}".format(d,s))
@@ -152,7 +151,7 @@ def valid(digits, ans):
 def generate_possibles(equationLength):
     possibilities = []
     
-    anses = [random.randint(1,10**(equationLength//3)-1),random.randint(1,10**(equationLength//3)-1),random.randint(1,10**(equationLength//3)-1),random.randint(1,10**(equationLength//3)-1),random.randint(1,10**(equationLength//3)-1)]
+    anses = [random.randint(1,10**(equationLength//3)-1),random.randint(1,10**(equationLength//3)-1)]
     for ans in anses:
         remaining = equationLength - len(str(ans)) - 1
 
@@ -185,7 +184,7 @@ def generate_possibles(equationLength):
 def generate_possibles_fixed_length(equationLength,ans_length,di,s):
     possibilities = []
     anses = []
-    while len(anses) < 5:
+    while len(anses) < 2:
         a = random.randint(10**(ans_length-1),10**ans_length-1)
         for i in str(a):
             if int(i) not in di:
