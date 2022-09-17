@@ -81,10 +81,10 @@ def travellingsuisserobot():
 
 def makegrid(data):
     data = data.split("\n")
-    data = data[1:-2]
+    data = data[:-1]
     grid = []
     for i in data:
-        grid.append(list(i[1:-1]))
+        grid.append(list(i))
     return grid
 def turnto(cur, target):
     if cur == target:
