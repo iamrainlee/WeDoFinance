@@ -22,8 +22,7 @@ def stigwarmup():
     return json.dumps(result)
 
 def calculatestig(questions,maxRating):
-    questions = list(set(questions))
-    questions = sorted(questions, key=lambda d: d['lower']) 
+    questions = sorted(questions, key=lambda d: d['from']) 
     # l_accurate = []
     # count = 0
     # min_l = -1
@@ -38,10 +37,10 @@ def calculatestig(questions,maxRating):
     for i in range(1,maxRating+1):
         possible_guesses = list(range(1,maxRating+1))
         for q in questions:
-            if (i >= q["lower"] and i <= q["higher"]):
-                possible_guesses = [x for x in possible_guesses if x >= q["lower"] and x <= q["higher"]]
+            if (i >= q["from"] and i <= q["to"]):
+                possible_guesses = [x for x in possible_guesses if x >= q["from"] and x <= q["to"]]
             else:
-                possible_guesses = [x for x in possible_guesses if x < q["lower"] or x > q["higher"]]
+                possible_guesses = [x for x in possible_guesses if x < q["from"] or x > q["to"]]
         if (i == min(possible_guesses)):
             count += 1
     d = gcd(count, maxRating)
