@@ -21,8 +21,8 @@ def rubiks():
         if len(ops) == 0:
             break
         if len(ops) > 1 and ops[1] == 'i':
-            logging.info("perform: {}".format(ops[0:1]))
-            state = turnrubiks(state,ops[0:1])
+            logging.info("perform: {}".format(ops[0:2]))
+            state = turnrubiks(state,ops[0:2])
             ops = ops[2:]
         else:
             logging.info("perform: {}".format(ops[0]))
