@@ -51,8 +51,8 @@ def calculatestigfull(questions,maxRating,lucky):
             # min_list.add(q['from'])
             min_val = [x for x in min_val if x < q["lower"] or x > q["upper"]]
             continue
-        f = (q['lower'] + p*lucky)%(maxRating-1)+1
-        t = (q['upper'] + p*lucky)%(maxRating-1)+1
+        f = (q['lower'] + p*lucky -1)%(maxRating)+1
+        t = (q['upper'] + p*lucky -1)%(maxRating)+1
         if f>t:
             temp = f
             f = t
