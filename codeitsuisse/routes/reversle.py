@@ -4,7 +4,7 @@ import copy
 import numpy as np
 import random
 
-from flask import request, jsonify
+from flask import request, jsonify, Response
 
 from codeitsuisse import app
 
@@ -24,6 +24,7 @@ def reversle():
         result = random.choice(possibles)
     else:
         d = [0,1,2,3,4,5,6,7,8,9]
+        d2 = ["0","1","2","3","4","5","6","7","8","9"]
         s = ["+","-", "*", "/", "\\", "^" ]
         poss = [""] * equationLength
         equationHistory = data.get("equationHistory")
@@ -42,7 +43,7 @@ def reversle():
                     if resultHistory[i][j] == "2":
                         poss[j] = equationHistory[i][j]
                     if resultHistory[i][j] == "0":
-                        if equationHistory[i][j] in d: d.remove(equationHistory[i][j])
+                        if equationHistory[i][j] in d2: d.remove(int(equationHistory[i][j]))
                         if equationHistory[i][j] in s: s.remove(equationHistory[i][j])
         if poss.count("") >= equationLength // 2 :
             if ans_length == -1:
@@ -125,7 +126,7 @@ def reversle():
             
                 
     logging.info("result: {}".format(result))
-    return json.dumps({"equation":result})
+    return Response(json.dumps({"equation":result}), mimetype='application/json')
 
 def valid(digits, ans):
     if (len(digits) == 1):
