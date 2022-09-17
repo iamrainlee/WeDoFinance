@@ -40,8 +40,9 @@ def getDistance(grid,h,w):
         grid[h+1][w-1] = "N"
     
 def calNo(grid,n,w,h,ans):
-    if (n==0):
+    if (n<=0):
         ans.add(','.join(str(item) for innerlist in grid for item in innerlist))
+        return
     nochange = True
     for i in range(h):
         for j in range(w):
@@ -60,7 +61,7 @@ def calsocialdistancing(s):
     n = int(d[2])-fixed
     if n > 1 and w*h <= (round(math.sqrt(n))+1)**2:
         return "No Solution"
-    if int(d[2])>4:
+    if n>4:
         return "No Solution"
     grid = []
     for i in range(h):
@@ -68,7 +69,7 @@ def calsocialdistancing(s):
     for i in range(fixed):
         grid[int(d[3+i*2])][int(d[4+i*2])] = "V"
         getDistance(grid,int(d[3+i*2]),int(d[4+i*2]))
-
+    print(grid)
     ans = set()
     calNo(grid,n,w,h,ans)
     if len(ans) == 0:
