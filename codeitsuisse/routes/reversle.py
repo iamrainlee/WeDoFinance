@@ -207,7 +207,7 @@ def generate_possibles_fixed_length(equationLength,ans_length,di,s):
         for i in str(a):
             if int(i) not in di.keys():
                 able = False
-            if str(a).count(str(i)) > di[int(i)]:
+            elif str(a).count(str(i)) > di[int(i)]:
                 able = False
         if able:
             anses.append(a)
