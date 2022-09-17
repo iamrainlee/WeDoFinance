@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 @app.route('/travelling-suisse-robot', methods=['POST'])
 def travellingsuisserobot():
-    data = request.stream.readlines()
+    data = request.get_data().decode('utf-8')
     logging.info("data sent for evaluation {}".format(data))
     grid = np.asarray(makegrid(data))
     grids = []
