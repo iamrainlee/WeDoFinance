@@ -20,7 +20,7 @@ def rubiks():
     while True:
         if len(ops) == 0:
             break
-        if ops[1] == 'i':
+        if len(ops) > 1 and ops[1] == 'i':
             state = turnrubiks(state,ops[0:1])
             ops = ops[2:]
         else:
