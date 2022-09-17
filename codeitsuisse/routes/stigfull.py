@@ -35,7 +35,7 @@ def calculatestigfull(questions,maxRating,lucky):
     min_val = -1
     correct =  set()
     p = -1
-    q = -1
+    q1 = -1
     # min_list = set()
     max_list = set()
     for q in questions:
@@ -46,7 +46,7 @@ def calculatestigfull(questions,maxRating,lucky):
             else:
                 correct.add(q['upper']+1)
             p = 2 // gcd(2,maxRating)
-            q = maxRating // gcd(2,maxRating)
+            q1 = maxRating // gcd(2,maxRating)
             max_list.add(q['upper'])
             # min_list.add(q['from'])
             if q["lower"] == 1:
@@ -71,7 +71,7 @@ def calculatestigfull(questions,maxRating,lucky):
         max_list.add(t)
         # min_list.add(f)
         p = len(correct) // gcd(len(correct),maxRating)
-        q = maxRating // gcd(len(correct),maxRating)
+        q1 = maxRating // gcd(len(correct),maxRating)
     # for i in range(1,maxRating+1):
     #     possible_guesses = list(range(1,maxRating+1))
     #     for q in questions:
@@ -83,7 +83,7 @@ def calculatestigfull(questions,maxRating,lucky):
     #         count += 1
     # d = gcd(count, maxRating)
  
-    return {"p": p, "q": q}
+    return {"p": p, "q": q1}
 
     
 
