@@ -69,7 +69,7 @@ def connect4():
                     sendmove(battleId,columns[move])
                     lastmove = columns[move]
                     makemove(board,move)
-                    continue
+                continue
                 # if( data['youAre'] != ""):
                 #     youAre = data['youAre']
                 #     if(data['youAre'] == "\xF0\x9F\x94\xB4"):
@@ -98,6 +98,12 @@ def connect4():
                             if lastmove != data['column']:
                                 flip(battleId)
                                 break
+                            while True:
+                                move = random.randint(0,6)
+                                if makemove(board,move):
+                                    sendmove(battleId,columns[move])
+                                    lastmove = columns[move]
+                                    break
                         else:
                             move = columns.index(data['column'])
                             if not makemove(board,move):
