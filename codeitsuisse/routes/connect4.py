@@ -43,6 +43,8 @@ def connect4():
                         logging.info("Prepare to make move")
                         myturn = True
                         break
+                    else:
+                        break
             except:
                 try:
                     columns ="ABCDEFG"
@@ -52,7 +54,8 @@ def connect4():
                     if data['player'] != "\xF0\x9F\x94\xB4" and data['player'] != "\xF0\x9F\x9F\xA1":
                         flip(battleId)
                         break
-
+                    if data['action'] != '(╯°□°)╯︵ ┻━┻' and data['action'] != 'putToken':
+                        flip(battleId)
                     else:
                         if myturn:
                             flip(battleId)
