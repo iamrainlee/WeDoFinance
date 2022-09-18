@@ -42,18 +42,14 @@ def connect4():
                     if(data['youAre'] == "\xF0\x9F\x94\xB4"):
                         logging.info("Prepare to make move2")
                         myturn = True
-                        while True:
-                            move = random.randint(0,6)
-                            sendmove(battleId,columns[move])
-                            lastmove = columns[move]
-                            makemove(board,move)
-                            break
-                        break
+                        move = random.randint(0,6)
+                        sendmove(battleId,columns[move])
+                        lastmove = columns[move]
+                        makemove(board,move)
+                        continue
                     if youAre != "\xF0\x9F\x94\xB4" and youAre != "\xF0\x9F\x9F\xA1":
                         flip(battleId)
                         break
-                    break
-                break
             except:
                 try:
                     columns ="ABCDEFG"
@@ -70,12 +66,15 @@ def connect4():
                         if data['player'] == "\xF0\x9F\x94\xB4":
                             if lastmove != data['column']:
                                 flip(battleId)
+                                break
                         if myturn:
                             flip(battleId)
+                            break
                         else:
                             move = columns.index(data['column'])
                             if not makemove(board,move):
                                 flip(battleId)
+                                break
                             else:
                                 while True:
                                     move = random.randint(0,6)
@@ -83,7 +82,7 @@ def connect4():
                                         sendmove(battleId,columns[move])
                                         lastmove = columns[move]
                                         break
-                    break
+                    continue
                 except:
                     try:
                         if(data['winner'] == "draw" or data['winner'] == youAre):
