@@ -64,13 +64,15 @@ def connect4():
             try:
                 if( data['youAre'] != ""):
                     youAre = data['youAre']
-                    #if(data['youAre'] == "\xF0\x9F\x94\xB4"):
-                    logging.info("Prepare to make move")
-                    move = random.randint(0,6)
-                    sendmove(battleId,columns[move])
-                    lastmove = columns[move]
-                    makemove(board,move)
-                    continue
+                    if(data['youAre'] == "\xF0\x9F\x94\xB4"):
+                        logging.info("Prepare to make move")
+                        move = random.randint(0,6)
+                        sendmove(battleId,columns[move])
+                        lastmove = columns[move]
+                        makemove(board,move)
+                        continue
+                    else:
+                        flip(battleId)
                 else:
                     flip(battleId)
                     break
