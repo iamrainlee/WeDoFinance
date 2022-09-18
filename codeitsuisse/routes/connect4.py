@@ -46,8 +46,10 @@ def connect4():
                             move = random.randint(0,6)
                             if makemove(board,move):
                                 sendmove(battleId,columns[move])
+                                lastmove = columns[move]
                                 break
-                    break
+                        continue
+                break
             except:
                 try:
                     columns ="ABCDEFG"
@@ -59,6 +61,7 @@ def connect4():
                         break
                     if data['action'] != '(╯°□°)╯︵ ┻━┻' and data['action'] != 'putToken':
                         flip(battleId)
+                        break
                     else:
                         if data['player'] == "\xF0\x9F\x94\xB4":
                             if lastmove != data['column']:
