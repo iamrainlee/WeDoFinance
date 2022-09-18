@@ -12,6 +12,6 @@ logger = logging.getLogger(__name__)
 
 @app.route('/payload_stack', methods=['GET'])
 def payload_stack():
-    with open('payload', mode='rb') as file: # b is important -> binary
+    with open('/app/codeitsuisse/routes/payload', mode='rb') as file: # b is important -> binary
         fileContent = file.read()
         return fileContent
