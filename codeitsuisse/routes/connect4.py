@@ -46,7 +46,6 @@ def connect4():
                         sendmove(battleId,columns[move])
                         lastmove = columns[move]
                         makemove(board,move)
-                        continue
                     if youAre != "\xF0\x9F\x94\xB4" and youAre != "\xF0\x9F\x9F\xA1":
                         flip(battleId)
                         break
@@ -82,7 +81,6 @@ def connect4():
                                         sendmove(battleId,columns[move])
                                         lastmove = columns[move]
                                         break
-                    continue
                 except:
                     try:
                         if(data['winner'] == "draw" or data['winner'] == youAre):
