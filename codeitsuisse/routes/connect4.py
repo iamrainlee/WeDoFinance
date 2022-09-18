@@ -59,6 +59,7 @@ def connect4():
                 try:
                     data = json.loads(data)
                 except:
+                    flip(battleId)
                     continue
             try:
                 if( data['youAre'] != ""):
@@ -69,7 +70,10 @@ def connect4():
                     sendmove(battleId,columns[move])
                     lastmove = columns[move]
                     makemove(board,move)
-                continue
+                    continue
+                else:
+                    flip(battleId)
+                    break
                 # if( data['youAre'] != ""):
                 #     youAre = data['youAre']
                 #     if(data['youAre'] == "\xF0\x9F\x94\xB4"):
@@ -95,15 +99,17 @@ def connect4():
                         break
                     else:
                         if data['player'] == youAre:
-                            if lastmove != data['column']:
-                                flip(battleId)
-                                break
-                            while True:
-                                move = random.randint(0,6)
-                                if makemove(board,move):
-                                    sendmove(battleId,columns[move])
-                                    lastmove = columns[move]
-                                    break
+                            flip(battleId)
+                            break
+                            # if lastmove != data['column']:
+                            #     flip(battleId)
+                            #     break
+                            # while True:
+                            #     move = random.randint(0,6)
+                            #     if makemove(board,move):
+                            #         sendmove(battleId,columns[move])
+                            #         lastmove = columns[move]
+                            #         break
                         else:
                             move = columns.index(data['column'])
                             if not makemove(board,move):
@@ -117,6 +123,8 @@ def connect4():
                                         lastmove = columns[move]
                                         break
                 except:
+                    flip(battleId)
+                    break
                     try:
                         if(data['winner'] == "draw" or data['winner'] == youAre):
                             logging.info("Win game!")
