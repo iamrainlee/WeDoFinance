@@ -40,7 +40,7 @@ def connect4():
                 if( data['youAre'] != ""):
                     youAre = data['youAre']
                     if(data['youAre'] == "\xF0\x9F\x94\xB4"):
-                        logging.info("Prepare to make move")
+                        logging.info("Prepare to make move2")
                         myturn = True
                         while True:
                             move = random.randint(0,6)
