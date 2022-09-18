@@ -47,7 +47,7 @@ def connect4():
                             if makemove(board,move):
                                 sendmove(battleId,columns[move])
                                 break
-                        break
+                    break
             except:
                 try:
                     columns ="ABCDEFG"
@@ -76,6 +76,7 @@ def connect4():
                                         sendmove(battleId,columns[move])
                                         lastmove = columns[move]
                                         break
+                    break
                 except:
                     try:
                         if(data['winner'] == "draw" or data['winner'] == youAre):
