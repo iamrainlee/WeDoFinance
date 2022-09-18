@@ -69,7 +69,7 @@ def connect4():
                         sendmove(battleId,columns[move])
                         lastmove = columns[move]
                         makemove(board,move)
-                        break
+                    continue
                 # if( data['youAre'] != ""):
                 #     youAre = data['youAre']
                 #     if(data['youAre'] == "\xF0\x9F\x94\xB4"):
