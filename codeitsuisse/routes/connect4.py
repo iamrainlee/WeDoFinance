@@ -98,10 +98,7 @@ def connect4():
                             if lastmove != data['column']:
                                 flip(battleId)
                                 break
-                        if myturn:
-                            flip(battleId)
-                            break
-                        else:
+                        if data['player'] != youAre:
                             move = columns.index(data['column'])
                             if not makemove(board,move):
                                 flip(battleId)
