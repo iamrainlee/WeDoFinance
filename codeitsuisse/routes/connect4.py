@@ -40,15 +40,24 @@ def connect4():
                 if( data['youAre'] != ""):
                     youAre = data['youAre']
                     if(data['youAre'] == "\xF0\x9F\x94\xB4"):
-                        logging.info("Prepare to make move2")
-                        myturn = True
+                        logging.info("Prepare to make move")
                         move = random.randint(0,6)
                         sendmove(battleId,columns[move])
                         lastmove = columns[move]
                         makemove(board,move)
-                    if youAre != "\xF0\x9F\x94\xB4" and youAre != "\xF0\x9F\x9F\xA1":
-                        flip(battleId)
                         break
+                # if( data['youAre'] != ""):
+                #     youAre = data['youAre']
+                #     if(data['youAre'] == "\xF0\x9F\x94\xB4"):
+                #         logging.info("Prepare to make move2")
+                #         myturn = True
+                #         move = random.randint(0,6)
+                #         sendmove(battleId,columns[move])
+                #         lastmove = columns[move]
+                #         makemove(board,move)
+                #     if youAre != "\xF0\x9F\x94\xB4" and youAre != "\xF0\x9F\x9F\xA1":
+                #         flip(battleId)
+                #         break
             except:
                 try:
                     if data["column"] not in columns:
