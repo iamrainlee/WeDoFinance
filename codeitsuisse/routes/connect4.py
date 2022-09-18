@@ -44,10 +44,10 @@ def connect4():
                         myturn = True
                         while True:
                             move = random.randint(0,6)
-                            if makemove(board,move):
-                                sendmove(battleId,columns[move])
-                                lastmove = columns[move]
-                                break
+                            sendmove(battleId,columns[move])
+                            lastmove = columns[move]
+                            makemove(board,move)
+                            break
                         break
                     if youAre != "\xF0\x9F\x94\xB4" and youAre != "\xF0\x9F\x9F\xA1":
                         flip(battleId)
