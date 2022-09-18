@@ -42,8 +42,11 @@ def connect4():
                     if(data['youAre'] == "\xF0\x9F\x94\xB4"):
                         logging.info("Prepare to make move")
                         myturn = True
-                        break
-                    else:
+                        while True:
+                            move = random.randint(0,6)
+                            if makemove(board,move):
+                                sendmove(battleId,columns[move])
+                                break
                         break
             except:
                 try:
@@ -57,6 +60,9 @@ def connect4():
                     if data['action'] != '(╯°□°)╯︵ ┻━┻' and data['action'] != 'putToken':
                         flip(battleId)
                     else:
+                        if data['player'] == "\xF0\x9F\x94\xB4":
+                            if lastmove != data['column']:
+                                flip(battleId)
                         if myturn:
                             flip(battleId)
                         else:
@@ -64,7 +70,12 @@ def connect4():
                             if not makemove(board,move):
                                 flip(battleId)
                             else:
-                                myturn = True
+                                while True:
+                                    move = random.randint(0,6)
+                                    if makemove(board,move):
+                                        sendmove(battleId,columns[move])
+                                        lastmove = columns[move]
+                                        break
                 except:
                     try:
                         if(data['winner'] == "draw" or data['winner'] == youAre):
@@ -76,13 +87,6 @@ def connect4():
                     except:
                         gameOn = False
                         break
-        if myturn:
-            while True:
-                move = random.randint(0,6)
-                if makemove(board,move):
-                    sendmove(battleId,columns[move])
-                    break
-            myturn = False
 
     return json.dumps(data)
     
