@@ -48,7 +48,7 @@ def connect4():
                                 sendmove(battleId,columns[move])
                                 lastmove = columns[move]
                                 break
-                        continue
+                        break
                 break
             except:
                 try:
