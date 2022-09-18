@@ -51,7 +51,6 @@ def connect4():
                         break
             except:
                 try:
-                    columns ="ABCDEFG"
                     if data["column"] not in columns:
                         flip(battleId)
                         break
@@ -62,7 +61,7 @@ def connect4():
                         flip(battleId)
                         break
                     else:
-                        if data['player'] == "\xF0\x9F\x94\xB4":
+                        if data['player'] == youAre:
                             if lastmove != data['column']:
                                 flip(battleId)
                                 break
