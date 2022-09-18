@@ -95,11 +95,13 @@ def connect4():
     return json.dumps(data)
     
 def flip(battleId):
+    logging.info("Flip table")
     rdata = {}
     rdata['action'] = '(╯°□°)╯︵ ┻━┻'
     requests.post("https://cis2022-arena.herokuapp.com/connect4/play/" + battleId, data = rdata)
 
 def sendmove(battleId,move):
+    logging.ingo("sendmove: {}".format(move))
     rdata = {}
     rdata['column'] = move
     rdata['action'] = 'putToken'
