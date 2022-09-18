@@ -49,6 +49,10 @@ def connect4():
                                 lastmove = columns[move]
                                 break
                         break
+                    if youAre != "\xF0\x9F\x94\xB4" and youAre != "\xF0\x9F\x9F\xA1":
+                        flip(battleId)
+                        break
+                    break
                 break
             except:
                 try:
@@ -110,7 +114,7 @@ def create_board():
     return board
 
 def makemove(board,col):
-    for i in range(6):
+    for i in range(5,-1,-1):
         if board[i][col] == 0:
             board[i][col] = 1
             return True
