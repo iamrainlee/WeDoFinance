@@ -13,6 +13,30 @@ from codeitsuisse import app
 
 logger = logging.getLogger(__name__)
 
+def flip(battleId):
+    logging.info("Flip table")
+    rdata = {}
+    rdata['action'] = '(╯°□°)╯︵ ┻━┻'
+    requests.post("https://cis2022-arena.herokuapp.com/connect4/play/" + battleId, data = rdata)
+
+def sendmove(battleId,move):
+    logging.info("sendmove: {}".format(move))
+    rdata = {}
+    rdata['column'] = move
+    rdata['action'] = 'putToken'
+    requests.post("https://cis2022-arena.herokuapp.com/connect4/play/" + battleId, data = rdata)
+
+def create_board():
+    board = np.zeros((6, 7))
+    return board
+
+def makemove(board,col):
+    for i in range(5,-1,-1):
+        if board[i][col] == 0:
+            board[i][col] = 1
+            return True
+    return False
+
 @app.route('/connect4', methods=['POST'])
 def connect4():
     data = request.get_json()
@@ -102,30 +126,7 @@ def connect4():
                         break
 
     return json.dumps(data)
-    
-def flip(battleId):
-    logging.info("Flip table")
-    rdata = {}
-    rdata['action'] = '(╯°□°)╯︵ ┻━┻'
-    requests.post("https://cis2022-arena.herokuapp.com/connect4/play/" + battleId, data = rdata)
 
-def sendmove(battleId,move):
-    logging.ingo("sendmove: {}".format(move))
-    rdata = {}
-    rdata['column'] = move
-    rdata['action'] = 'putToken'
-    requests.post("https://cis2022-arena.herokuapp.com/connect4/play/" + battleId, data = rdata)
-
-def create_board():
-    board = np.zeros((6, 7))
-    return board
-
-def makemove(board,col):
-    for i in range(5,-1,-1):
-        if board[i][col] == 0:
-            board[i][col] = 1
-            return True
-    return False
 
 # def makemove2(board,youAre,battleId,players):
 #     data = {}
